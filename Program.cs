@@ -11,11 +11,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyWorldDbContext>(options =>
 {
-	options.UseSqlServer(builder.Configuration.GetConnectionString("MyWorldDbConnection"),
+        var connectionString = builder.Configuration.GetConnectionString("MyWorldDbConnection");
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+	/*options.UseSqlServer(builder.Configuration.GetConnectionString("MyWorldDbConnection"),
         sqlServerOptionsAction: sqlOptions =>
         {
             sqlOptions.EnableRetryOnFailure();
-        });
+        });*/
 });
 
 

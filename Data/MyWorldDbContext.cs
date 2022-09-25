@@ -9,5 +9,5 @@ public class MyWorldDbContext : DbContext
     {
  
     }
-    public DbSet<Cake> Cake { get; set; }
+    public DbSet<User> User { get; set; }
 }
